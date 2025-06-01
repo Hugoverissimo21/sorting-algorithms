@@ -80,7 +80,7 @@ Nesta secção serão apresentados os algoritmos selecionados, detalhando-se ind
 
 O algoritmo \textit{Bubble sort} consiste em comparar um dado item com todos os elementos de uma lista, em que o item vai se reposicionando com elementos comparativamente menores até encontrar um item maior ou chegar ao fim da lista. O nome do algoritmo prende-se com a forma como o elemento comparado vai ascendendo (ou afundando, consoante seja usado), tal como uma bolha na água. 
 
-Tipicamente este algoritmo não encontra aplicação em casos reais devido à sua ineficiência e complexidade de ordem \(O(n^2)\). No entanto, a sua rápida implementação pode ser de interesse em casos particulares, em que listas que estejam próximas da sua forma ordenada passam pelo algoritmo com uma complexidade de ordem \(O(n)\).
+O algoritmo Bubble Sort ordena uma lista iterando repetidamente sobre os elementos e trocando pares adjacentes se estiverem fora de ordem. A cada iteração, o maior elemento "bolha" para o fim da lista não ordenada. O processo repete-se até que nenhuma troca seja necessária, sinalizando que a lista está ordenada.
 
 \begin{algorithm}[H]
     \raggedright
@@ -110,9 +110,36 @@ Tipicamente este algoritmo não encontra aplicação em casos reais devido à su
     \end{algorithmic}
 \end{algorithm}
 
-FALAR DA COMPLEXIDADE DO ALGORITMO A PARTIR DA ANÁLISE DO MESMO + BEST AND WORST CASE
+A complexidade do algoritmo depende do número de comparações e trocas realizadas. Em todos os casos, o número máximo de comparações realizadas é:
+\[
+(n - 1) + (n - 2) + \ldots + 1 = \frac{n(n - 1)}{2}
+\]
+o que corresponde a uma complexidade de ordem \(\mathcal{O}(n^2)\).
+
+No melhor caso, quando a lista já está ordenada, a flag \texttt{swapped} permite terminar após a primeira iteração sem trocas. Neste cenário, o algoritmo apenas percorre uma vez a lista e não realiza nenhuma troca, resultando numa complexidade de tempo linear:
+\[
+\mathcal{O}(n)
+\]
+
+No pior caso, quando a lista está em ordem inversa, o algoritmo realiza o número máximo possível de trocas e comparações, resultando em:
+\[
+\mathcal{O}(n^2)
+\]
+
+Apesar da sua simplicidade, o Bubble Sort é ineficiente para listas grandes. No entanto, é estável e pode ser útil apenas para fins didáticos ou em contextos onde a simplicidade do código é prioritária.
+
+Tipicamente este algoritmo não encontra aplicação em casos reais devido à sua ineficiência e complexidade de ordem \(O(n^2)\). No entanto, a sua rápida implementação pode ser de interesse em casos particulares, em que listas que estejam próximas da sua forma ordenada passam pelo algoritmo com uma complexidade de ordem \(O(n)\).
 
 Existem algoritmos baseados nesta abordagem, tal como o \textit{Cocktail sort}, que aplica a metodologia em sentido crescente e decrescente, tornando-o mais rápido por norma, mas com o mesmo grau de complexidade no pior cenário.
+
+Em resumo, a complexidade do Bubble Sort é:
+\[
+\begin{cases}
+\mathcal{O}(n) & \text{melhor caso (lista já ordenada)} \\
+\mathcal{O}(n^2) & \text{pior caso (lista em ordem inversa)} \\
+\mathcal{O}(n^2) & \text{caso médio}
+\end{cases}
+\]
 
 \subsection{Selection Sort}
 
