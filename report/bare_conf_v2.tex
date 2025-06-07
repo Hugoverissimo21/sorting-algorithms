@@ -29,8 +29,7 @@
 
 \begin{document}
 
-%selection sort, insertion sort, quick sort(LR PTRS), merge sort, heap sort, radix sort (LSD e MSD), std sort gcc, std::stable_sort gcc, shell sort, cocktail shaker, gnome sort, bitonic sort, bogo sort
-\title{algortimos de ordenacao ? referencias}
+\title{Análise Comparativa de Algoritmos de Ordenação: Teoria e Desempenho Prático}
 
 \author{\IEEEauthorblockN{\\ Hugo Veríssimo}
 \IEEEauthorblockA{Optimização Combinatória 24/25\\
@@ -48,13 +47,13 @@ joaopcardoso@ua.pt}}
 \thispagestyle{plain}
 
 \begin{abstract}
-rever italico ou não no nome dos coisos + "sort" VS "Sort" + mathcal O VS normal math O
+Este trabalho apresenta uma análise comparativa de nove algoritmos de ordenação, abordando tanto os seus fundamentos teóricos como o desempenho empírico observado em simulações computacionais. Foram considerados algoritmos clássicos, eficientes e especializados, com especial atenção às suas complexidades temporais. Através de implementações em \textit{Python} e da execução em listas aleatórias de várias dimensões, foi possível verificar a correspondência entre os resultados experimentais e as previsões teóricas, bem como destacar situações em que a escolha do algoritmo mais adequado depende do contexto específico dos dados. Os resultados reforçam a importância de combinar análise teórica e avaliação prática na seleção de métodos de ordenação.
 \end{abstract}
 
 \begin{quote}
 \small
 \noindent
-\textbf{Palavras-chave:} zzz, aaa
+\textbf{Palavras-chave:} arranjar referencias, rever italico ou não no nome dos coisos + "sort" VS "Sort" + mathcal O VS normal math O
 \end{quote}
 
 \IEEEpeerreviewmaketitle
@@ -65,18 +64,19 @@ Os algoritmos de ordenação são essenciais em várias áreas da optimização 
 
 Em contextos de otimização combinatória, onde para vários problemas se torna fundamental a ordenação prévia de dados, como nas heurísticas para o problema Knapsack, no algoritmo de Kruskal para construção de árvores geradoras mínimas, ou em algoritmos gulosos para cobertura de conjuntos, a escolha do método de ordenação pode impactar significativamente a eficiência global da solução.
 
-% POR MELHORAR ESTE PARÁGRAFO
-Este trabalho visa explorar os principais algoritmos de ordenação, destacando as suas características, o seu funcionamento, a complexidade computacional associada e uma análise comparativa entre os mesmos. Considerando as diferentes implementações e constrangimentos associados, exploramos os cenários onde cada algoritmo poderá ser mais útil. 
-%SERÃO ABORDADOS ALGORITMOS COMO O QUICKSORT, .........
-O objetivo é compreender como a ordenação pode ser utilizada de forma estratégica para melhorar a eficiência de algoritmos em diversos cenários, e como otimizações na própria ordenação podem levar a avanços significativos em problemas computacionalmente intensivos.
+Este trabalho visa explorar os principais algoritmos de ordenação, destacando as suas características, o seu funcionamento, a complexidade computacional associada e uma análise comparativa entre os mesmos.
 
-% Like insertion sort, bubble sort is adaptive, which can give it an advantage over algorithms like quicksort. This means that it may outperform those algorithms in cases where the list is already mostly sorted (having a small number of inversions), despite the fact that it has worse average-case time complexity. For example, bubble sort is O ( n ) {\displaystyle O(n)} on a list that is already sorted, while quicksort would still perform its entire O ( n log ⁡ n ) {\displaystyle O(n\log n)} sorting process. Útil para discutir os resultados, e potencial utilidade
+Serão abordados algoritmos de ordenação representativos de diferentes estratégias fundamentais, nomeadamente os métodos baseados em troca (\textit{exchange sort}), como o Bubble Sort; em seleção (\textit{selection sort}), como o Selection Sort; em inserção (\textit{insertion sort}), como o Insertion Sort; e em divisão e conquista, como o Merge Sort e o Quick Sort. Para além destes, serão também analisados algoritmos baseados em distribuição, como o Counting Sort e o Radix Sort, os quais não se baseiam em comparações diretas entre elementos.
+
+O objetivo é compreender como a ordenação pode ser utilizada de forma estratégica para melhorar a eficiência de algoritmos em diversos cenários, e como otimizações na própria ordenação podem levar a avanços significativos em problemas computacionalmente intensivos.
 
 \section{Algoritmos de Ordenação}
 
-Nesta secção serão apresentados os algoritmos selecionados, detalhando-se individualmente o seu princípio básico de funcionamento, a complexidade temporal, as vantagens e desvantagens, e a aplicabilidade prática em diferentes cenários da otimização combinatória. POR REVER SE REALMENTE SE FAZ ISTO TUDO E MUDAR ?!?!?!??!
+Nesta secção apresentam-se nove algoritmos de ordenação selecionados, com uma descrição individual do seu princípio de funcionamento, análise da complexidade temporal, identificação das principais vantagens e limitações, bem como a caracterização dos cenários de melhor caso, pior caso e caso médio.
 
-\subsection{Bubble Sort acrescentar informação sobre a família Exchange sorts}
+\subsection{Bubble Sort}
+
+% Like insertion sort, bubble sort is adaptive, which can give it an advantage over algorithms like quicksort. This means that it may outperform those algorithms in cases where the list is already mostly sorted (having a small number of inversions), despite the fact that it has worse average-case time complexity. For example, bubble sort is O ( n ) {\displaystyle O(n)} on a list that is already sorted, while quicksort would still perform its entire O ( n log ⁡ n ) {\displaystyle O(n\log n)} sorting process. Útil para discutir os resultados, e potencial utilidade
 
 O algoritmo \textit{Bubble sort} consiste em comparar um dado item com todos os elementos de uma lista, em que o item vai se reposicionando com elementos comparativamente menores até encontrar um item maior ou chegar ao fim da lista. O nome do algoritmo prende-se com a forma como o elemento comparado vai ascendendo (ou afundando, consoante seja usado), tal como uma bolha na água. 
 
@@ -110,25 +110,18 @@ O algoritmo Bubble Sort ordena uma lista iterando repetidamente sobre os element
     \end{algorithmic}
 \end{algorithm}
 
-A complexidade do algoritmo depende do número de comparações e trocas realizadas. Em todos os casos, o número máximo de comparações realizadas é:
+Através da análise do pseudocódigo apresentado, verifica-se que a complexidade do algoritmo depende do número de comparações e trocas realizadas. Em todos os casos, o número máximo de comparações realizadas é dado por
 \[
-(n - 1) + (n - 2) + \ldots + 1 = \frac{n(n - 1)}{2}
+(n - 1) + (n - 2) + \ldots + 1 = \frac{n(n - 1)}{2} \text{,}
 \]
 o que corresponde a uma complexidade de ordem \(\mathcal{O}(n^2)\).
 
-No melhor caso, quando a lista já está ordenada, a flag \texttt{swapped} permite terminar após a primeira iteração sem trocas. Neste cenário, o algoritmo apenas percorre uma vez a lista e não realiza nenhuma troca, resultando numa complexidade de tempo linear:
-\[
-\mathcal{O}(n)
-\]
+No melhor caso, quando a lista já está ordenada, a flag \texttt{swapped} permite terminar após a primeira iteração sem trocas. Neste cenário, o algoritmo apenas percorre uma vez a lista e não realiza nenhuma troca, resultando numa complexidade de tempo linear, $\mathcal{O}(n)$.
 
-No pior caso, quando a lista está em ordem inversa, o algoritmo realiza o número máximo possível de trocas e comparações, resultando em:
-\[
-\mathcal{O}(n^2)
-\]
+No pior caso, quando a lista está em ordem inversa, o algoritmo realiza o número máximo possível de trocas e comparações, resultando numa complexidade quadrática, $\mathcal{O}(n^2)$.
 
-Apesar da sua simplicidade, o Bubble Sort é ineficiente para listas grandes. No entanto, é estável e pode ser útil apenas para fins didáticos ou em contextos onde a simplicidade do código é prioritária.
 
-Tipicamente este algoritmo não encontra aplicação em casos reais devido à sua ineficiência e complexidade de ordem \(O(n^2)\). No entanto, a sua rápida implementação pode ser de interesse em casos particulares, em que listas que estejam próximas da sua forma ordenada passam pelo algoritmo com uma complexidade de ordem \(O(n)\).
+Tipicamente este algoritmo não encontra aplicação em casos reais devido à sua ineficiência. No entanto, a sua rápida implementação pode ser de interesse em casos particulares, em que listas que estejam próximas da sua forma ordenada.
 
 Existem algoritmos baseados nesta abordagem, tal como o \textit{Cocktail sort}, que aplica a metodologia em sentido crescente e decrescente, tornando-o mais rápido por norma, mas com o mesmo grau de complexidade no pior cenário.
 
@@ -143,7 +136,7 @@ Em resumo, a complexidade do Bubble Sort é:
 
 \subsection{Selection Sort}
 
-O algoritmo de \textit{Selection sort} tem um procedimento bastante diferente do algoritmo anterior. Faz parte da família de algoritmos de \textit{Selection sorts}, em que a lista de items ordenados vai sendo gerada por comparação a partir da lista original desordenada. No algoritmo em questão, procura-se o menor elemento disponível e coloca-se no início da nova lista. Estes passos repetem-se na lista desordenada até não existirem mais e a lista ordenada ser criada.
+O Selection Sort é um algoritmo de ordenação que pertence à família dos algoritmos \textit{selection sort}. Neste tipo de algoritmo, a lista é ordenada progressivamente através da seleção repetida do menor elemento entre os ainda não ordenados. A cada iteração, o menor elemento da porção não ordenada da lista é identificado e trocado com o elemento na posição corrente, avançando assim a fronteira da sublista ordenada.
 
 \begin{algorithm}[H]
     \raggedright
@@ -172,18 +165,21 @@ O algoritmo de \textit{Selection sort} tem um procedimento bastante diferente do
     \end{algorithmic}
 \end{algorithm}
 
-A complexidade do algoritmo pode ser analisada com base no número de comparações e trocas realizadas. O número de comparações é sempre o mesmo, independentemente da ordem inicial dos dados. Para uma lista com \( n \) elementos, o número total de comparações realizadas é dado por \((n-1) + (n-2) + \ldots + 1 = \frac{n(n-1)}{2}\), o que corresponde a uma complexidade de ordem \(\mathcal{O}(n^2)\) tanto no melhor como no pior caso.
+A complexidade do algoritmo pode ser analisada com base no número de comparações e trocas realizadas. O número de comparações é sempre o mesmo, independentemente da ordem inicial dos dados. Para uma lista com \( n \) elementos, o número total de comparações realizadas é dado por
+$$
+(n-1) + (n-2) + \ldots + 1 = \frac{n(n-1)}{2} \text{,}
+$$
+o que corresponde a uma complexidade de ordem \(\mathcal{O}(n^2)\), tanto no melhor como no pior caso.
 
 O número de trocas, por outro lado, depende da configuração inicial da lista. No melhor caso, quando a lista já está ordenada, o índice do menor elemento nunca difere do índice atual, pelo que nenhuma troca é efetuada. Assim, o número de trocas é zero. No pior caso, quando a lista está em ordem inversa, cada iteração do algoritmo encontra um menor elemento que precisa de ser trocado, resultando em \(n - 1\) trocas. Neste caso, o número de trocas é linear, ou seja, de ordem \(\mathcal{O}(n)\).
 
-Em resumo, o algoritmo Selection Sort tem complexidade temporal \(\mathcal{O}(n^2)\) em todos os casos, realiza poucas trocas (até \(n-1\)), não é adaptativo à ordenação inicial dos dados e não é um algoritmo estável.
+Em resumo, o algoritmo Selection Sort tem complexidade temporal \(\mathcal{O}(n^2)\) em todos os casos, realiza poucas trocas (até \(n-1\)) e não é adaptativo à ordenação inicial dos dados.
 
-
-Dentro desta família de algoritmos, há um que devemos destacar, chamado \textit{Gnome sort},  que consiste nas operações do \textit{Selection sort}, mas sem ter o segundo ciclo dentro do primeiro, resultando num número de operações semelhante ao \textit{Insertion sort}, e por consequência pior que o \textit{Selection sort}.
+%Dentro desta família de algoritmos, há um que se destaca, chamado Gnome Sort. Este algoritmo executa uma lógica semelhante à do Selection Sort, mas sem utilizar um ciclo aninhado para procurar o menor elemento. Em vez disso, percorre a lista avançando ou recuando conforme necessário, o que resulta num número maior de comparações e operações. Por isso, na prática, tende a ser menos eficiente do que o Selection Sort.
 
 \subsection{Insertion Sort}
 
-O algoritmo Insertion Sort ordena uma lista construindo progressivamente uma sublista ordenada à esquerda. A cada passo, o elemento atual é comparado com os anteriores e inserido na posição correta, deslocando os elementos maiores uma posição à frente.
+O algoritmo Insertion Sort ordena uma lista construindo, passo a passo, uma sublista ordenada à esquerda. Em cada iteração, o elemento atual é comparado com os anteriores e inserido na posição adequada, garantindo que a sublista à esquerda permanece ordenada. Para isso, os elementos maiores são deslocados uma posição para a direita, abrindo espaço para a inserção correta. O processo repete-se até que todos os elementos estejam no seu devido lugar.
 
 \begin{algorithm}[H]
     \raggedright
@@ -208,13 +204,15 @@ O algoritmo Insertion Sort ordena uma lista construindo progressivamente uma sub
     \end{algorithmic}
 \end{algorithm}
 
-A complexidade do algoritmo pode ser analisada considerando o número de comparações e movimentações de elementos. No pior caso, a lista está em ordem inversa. Cada novo elemento precisa de ser comparado com todos os anteriores e movido para o início da lista. Assim, o número total de comparações e deslocações neste caso é dado por \((1 + 2 + \ldots + n-1) = \frac{n(n-1)}{2}\), o que resulta numa complexidade temporal de ordem \(\mathcal{O}(n^2)\).
+Através da análise do pseudocódigo relativo ao algoritmo em destaque, verifica-se que a complexidade do mesmo pode ser analisada considerando o número de comparações e movimentações de elementos. No pior caso, a lista está em ordem inversa. Cada novo elemento precisa de ser comparado com todos os anteriores e movido para o início da lista. Assim, o número total de comparações e deslocações neste caso é dado por
+$$
+(1 + 2 + \ldots + n-1) = \frac{n(n-1)}{2} \text{,}
+$$
+o que resulta numa complexidade temporal de ordem \(\mathcal{O}(n^2)\).
 
 No melhor caso, a lista já está ordenada. O algoritmo ainda percorre os elementos, mas como nenhuma comparação resulta em troca, cada elemento é apenas comparado uma vez. Neste cenário, o número total de comparações é linear, e a complexidade temporal é \(\mathcal{O}(n)\).
 
 No caso médio, assume-se que metade dos elementos anteriores são maiores que o atual, levando a aproximadamente metade das comparações do pior caso, o que continua a resultar em complexidade \(\mathcal{O}(n^2)\).
-
-Em termos de eficiência prática, o Insertion Sort é eficiente para listas pequenas ou quase ordenadas, e tem a vantagem de ser estável, além de funcionar em tempo linear no melhor caso.
 
 Resumindo, o algoritmo apresenta complexidade:
 \[
@@ -225,9 +223,11 @@ Resumindo, o algoritmo apresenta complexidade:
 \end{cases}
 \]
 
+Em termos de eficiência prática, o Insertion Sort torna-se bastante eficiente para listas pequenas ou quase ordenadas, onde o número de deslocamentos é reduzido. Além disso, por ser estável e não requerer memória adicional significativa, é frequentemente utilizado como componente auxiliar em algoritmos de ordenação mais complexos, como o Timsort ou em fases finais de ordenação híbrida.
+
 \subsection{Counting Sort}
 
-O algoritmo Counting Sort é um algoritmo de ordenação não comparativo, apropriado para listas de números inteiros não negativos e com amplitude limitada. A ideia principal consiste em contar quantas vezes cada valor ocorre e depois reconstruir a lista ordenada a partir dessas contagens.
+O algoritmo Counting Sort é um método de ordenação não comparativo, especialmente eficiente para listas de números inteiros não negativos com amplitude limitada. Em vez de comparar elementos entre si, constrói uma tabela de frequências que regista quantas vezes cada valor ocorre. A partir dessa informação, determina-se a posição exata de cada elemento na lista final, permitindo uma ordenação estável e com complexidade linear nos melhores casos, quando o intervalo dos valores é conhecido e reduzido.
 
 \begin{algorithm}[H]
     \raggedright
@@ -256,7 +256,7 @@ O algoritmo Counting Sort é um algoritmo de ordenação não comparativo, aprop
     \end{algorithmic}
 \end{algorithm}
 
-A complexidade do algoritmo depende de dois fatores: o tamanho da lista \( n \) e o maior valor presente, denotado por \( k = \max(\text{arr}) \). A primeira parte do algoritmo percorre a lista original e preenche um vetor auxiliar \texttt{count} de tamanho \( k + 1 \), incrementando as posições correspondentes. Esta etapa tem complexidade \(\mathcal{O}(n)\). Em seguida, o algoritmo percorre o vetor \texttt{count}, que tem tamanho \( k + 1 \), e reconstrói a lista ordenada. Esta etapa tem complexidade \(\mathcal{O}(k)\).
+Atendendo o pseudocódigo apresentado, conclui-se que a complexidade do algoritmo depende de dois fatores: o tamanho da lista \( n \) e o maior valor presente, denotado por \( k = \max(\text{arr}) \). A primeira parte do algoritmo percorre a lista original e preenche um vetor auxiliar \texttt{count} de tamanho \( k + 1 \), incrementando as posições correspondentes. Esta etapa tem complexidade \(\mathcal{O}(n)\). Em seguida, o algoritmo percorre o vetor \texttt{count}, que tem tamanho \( k + 1 \), e reconstrói a lista ordenada. Esta etapa tem complexidade \(\mathcal{O}(k)\).
 
 Assim, a complexidade total do algoritmo é \(\mathcal{O}(n + k)\), tanto no melhor como no pior caso. Não há distinção entre diferentes ordens iniciais da lista, pois o algoritmo não realiza comparações entre os elementos.
 
@@ -266,11 +266,13 @@ Em resumo, a complexidade do Counting Sort é:
 \[
 \mathcal{O}(n + k)
 \]
-em todos os casos, sendo eficiente apenas quando \( k \in \mathcal{O}(n) \). O algoritmo é estável e apropriado para ordenar valores inteiros com gama pequena e conhecida.
+em todos os casos, sendo eficiente apenas quando \( k \in \mathcal{O}(n) \).
+
+O algoritmo é estável e apropriado para ordenar valores inteiros com intervalo de variação relativamente pequeno em relação ao número de elementos, permitindo uma ordenação eficiente em tempo linear, quando esta condição é satisfeita.
 
 \subsection{Radix Sort}
 
-O algoritmo Radix Sort ordena números inteiros processando-os dígito a dígito, a partir do dígito menos significativo até ao mais significativo. Em cada passo, aplica-se um algoritmo de ordenação estável, geralmente o Counting Sort, para ordenar os elementos com base no dígito atual. O número de iterações é igual ao número de dígitos do maior número presente na lista.
+O algoritmo Radix Sort ordena números inteiros ao processá-los dígito a dígito, começando pelo dígito menos significativo (unidades) e avançando até ao mais significativo (milhares, etc.). Em cada etapa, os elementos são reorganizados com base no dígito atual, utilizando um algoritmo de ordenação estável, tipicamente o Counting Sort, para garantir que a ordem relativa dos elementos com dígitos iguais é preservada. O processo repete-se tantas vezes quantos os dígitos do maior número na lista, até a ordenação estar completa.
 
 \begin{algorithm}[H]
     \raggedright
@@ -319,13 +321,12 @@ O algoritmo Radix Sort ordena números inteiros processando-os dígito a dígito
 
 Seja \( n \) o número de elementos da lista, \( k \) o valor máximo presente, e \( d \) o número de dígitos de \( k \) na base decimal. Em cada uma das \( d \) iterações, o Counting Sort é aplicado com complexidade \(\mathcal{O}(n + b)\), onde \( b \) é a base usada (tipicamente 10). Como \( b \) é constante, o custo de cada iteração é \(\mathcal{O}(n)\).
 
-Assim, a complexidade total do algoritmo Radix Sort é:
+Assim, a complexidade total do algoritmo Radix Sort é dada por
 \[
 \mathcal{O}(d \cdot n)
 \]
-como \( d = \lfloor \log_{10}(k) \rfloor + 1 \), pode também escrever-se como \(\mathcal{O}(n \cdot \log k)\) para base 10. Esta complexidade mantém-se tanto no melhor como no pior caso, já que todos os elementos são sempre processados integralmente, independentemente da ordem inicial.
 
-O Radix Sort é eficiente quando os números têm número limitado de dígitos (isto é, \( d \in \mathcal{O}(1) \)), caso em que o tempo de execução é linear em \( n \). No entanto, o algoritmo não é comparativo e apenas funciona diretamente para inteiros ou representações discretizáveis. Além disso, o consumo de espaço extra é \(\mathcal{O}(n + b)\) por iteração.
+Como \( d = \lfloor \log_{10}(k) \rfloor + 1 \), pode também escrever-se como \(\mathcal{O}(n \cdot \log k)\) para base 10. Esta complexidade mantém-se tanto no melhor como no pior caso, já que todos os elementos são sempre processados integralmente, independentemente da ordem inicial.
 
 Em resumo, o algoritmo apresenta complexidade:
 \[
@@ -333,10 +334,15 @@ Em resumo, o algoritmo apresenta complexidade:
 \]
 em todos os casos, e é estável, não comparativo e adequado para listas grandes de inteiros com número de dígitos moderado.
 
+Para além disso, o consumo de espaço extra é \(\mathcal{O}(n + b)\) por iteração.
+
+Assim, o Radix Sort é eficiente quando os números têm uma quantidade limitada de dígitos (isto é, \( d \in \mathcal{O}(1) \)), caso em que o tempo de execução é linear em \( n \). No entanto, o algoritmo não é comparativo e apenas funciona diretamente para inteiros ou valores que possam ser representados por dígitos. Por exemplo, números irracionais como \( \pi \) ou \( e \), que possuem infinitas casas decimais não periódicas, não podem ser tratados diretamente, pois não têm uma representação discreta e finita compatível com a lógica dígito-a-dígito do algoritmo.
 
 \subsection{Quick Sort}
 
-O algoritmo Quick Sort é um algoritmo de ordenação baseado no paradigma de dividir-para-conquistar. Escolhe um elemento como pivô e reorganiza a lista de forma que todos os elementos menores ou iguais ao pivô fiquem à esquerda, e os maiores à direita. Em seguida, aplica-se recursivamente o mesmo procedimento às duas sublistas geradas.
+O algoritmo Quick Sort é um método de ordenação baseado no paradigma de dividir-para-conquistar, amplamente valorizado pela sua eficiência prática e adaptabilidade a arquiteturas modernas. Escolhe um elemento como pivô e reorganiza a lista colocando à esquerda os elementos menores ou iguais ao pivô e à direita os maiores. Este processo de partição divide o problema original em subproblemas independentes, permitindo aplicar o mesmo procedimento de forma recursiva a cada sublista.
+
+A estrutura do Quick Sort é particularmente favorável ao paralelismo, já que, após a partição, as duas sublistas podem ser ordenadas simultaneamente em processos ou threads distintos, sem dependências entre si.
 
 \begin{algorithm}[H]
     \raggedright
@@ -373,7 +379,9 @@ O algoritmo Quick Sort é um algoritmo de ordenação baseado no paradigma de di
     \end{algorithmic}
 \end{algorithm}
 
-A complexidade do algoritmo depende da qualidade da escolha do pivô em cada chamada recursiva. No melhor caso, o pivô divide o array em duas partes aproximadamente iguais a cada etapa. A profundidade da recursão será então \(\log n\), e em cada nível realiza-se um número total de operações proporcional a \(n\), resultando numa complexidade total de:
+Tendo em conta o pseudocódigo apresentado, a complexidade do algoritmo depende da qualidade da escolha do pivô em cada chamada recursiva.
+
+No melhor caso, o pivô divide a lista em duas partes aproximadamente iguais a cada etapa. A profundidade da recursão será então \(\log n\), e em cada nível realiza-se um número total de operações proporcional a \(n\), resultando numa complexidade total de:
 \[
 \mathcal{O}(n \log n)
 \]
@@ -383,21 +391,22 @@ No pior caso, o pivô escolhido é sempre o menor ou o maior elemento, fazendo c
 \mathcal{O}(n^2)
 \]
 
-O caso médio, assumindo uma escolha aleatória ou razoável do pivô, também resulta em complexidade esperada de \(\mathcal{O}(n \log n)\). É importante destacar que a versão apresentada do algoritmo não é estável e realiza ordenação in-place, com consumo de memória adicional proporcional à profundidade da pilha de chamadas recursivas (em média \(\mathcal{O}(\log n)\)).
+O caso médio, assumindo uma escolha aleatória ou razoável do pivô, também resulta em complexidade esperada de \(\mathcal{O}(n \log n)\).
 
 Em resumo, a complexidade do Quick Sort é:
 \[
 \begin{cases}
 \mathcal{O}(n \log n) & \text{melhor caso (divisões equilibradas)} \\
-\mathcal{O}(n^2) & \text{pior caso (divisões altamente desequilibradas)} \\
+\mathcal{O}(n^2) & \text{pior caso (divisões desequilibradas)} \\
 \mathcal{O}(n \log n) & \text{caso médio (pivôs aleatórios ou bons)}
 \end{cases}
 \]
 
-
 \subsection{Merge Sort}
 
-O algoritmo Merge Sort é um algoritmo de ordenação baseado no paradigma de dividir-para-conquistar. A cada passo, divide recursivamente a lista ao meio até obter sublistas de tamanho 1, e depois combina essas sublistas de forma ordenada, reconstruindo a lista original em ordem crescente.
+O algoritmo Merge Sort é um método de ordenação baseado no paradigma de dividir-para-conquistar, tal como o Quick Sort. No entanto, em vez de utilizar um pivô para partição, o Merge Sort divide a lista ao meio de forma determinística, recursivamente, até obter sublistas de tamanho 1. Em seguida, procede à fusão ordenada dessas sublistas, reconstruindo progressivamente a lista original em ordem crescente.
+
+É, portanto, semelhante ao Quick Sort na abordagem recursiva e na divisão do problema, mas sem recurso a um pivô. A divisão é sempre equitativa e a ordenação ocorre na fase de combinação, não na de separação.
 
 \begin{algorithm}[H]
     \raggedright
@@ -463,15 +472,13 @@ O algoritmo é estável, mas não é in-place, pois exige espaço adicional prop
 Em resumo, a complexidade do Merge Sort é:
 \[
 \begin{cases}
-\mathcal{O}(n \log n) & \text{melhor caso} \\
-\mathcal{O}(n \log n) & \text{pior caso} \\
-\mathcal{O}(n \log n) & \text{caso médio}
+\mathcal{O}(n \log n) & \text{em todos os casos} \\
 \end{cases}
 \]
 
 \subsection{Heap Sort}
 
-O algoritmo Heap Sort ordena uma lista transformando-a inicialmente numa estrutura de heap máximo, em que o maior elemento está na raiz. Em seguida, remove repetidamente o elemento da raiz (o maior), coloca-o no fim da lista e reestrutura o heap com os elementos restantes. Este processo continua até a lista estar totalmente ordenada.
+O algoritmo Heap Sort ordena uma lista aproveitando as propriedades de uma estrutura chamada heap máxima, onde o maior elemento está sempre no topo. Embora represente uma árvore, esta estrutura é implementada como um vetor e obedece à regra de que cada elemento é maior ou igual aos seus filhos. O processo começa por reorganizar a lista para formar essa heap. Em seguida, remove-se o maior elemento (no topo), troca-se com o último da lista e ajusta-se a heap com os elementos restantes. Este ciclo repete-se até que todos os elementos estejam no lugar, resultando numa lista totalmente ordenada.
 
 \begin{algorithm}[H]
     \raggedright
@@ -520,24 +527,26 @@ O algoritmo Heap Sort ordena uma lista transformando-a inicialmente numa estrutu
     \end{algorithmic}
 \end{algorithm}
 
-A construção inicial do heap é feita percorrendo os nós não-folha da árvore e aplicando a operação \texttt{Heapify} de forma decrescente. Esta construção tem complexidade \(\mathcal{O}(n)\), resultado de uma análise amortizada do número de operações necessárias em cada nível da árvore.
+Com base no pseudocódigo do algoritmo, a construção inicial da heap é feita percorrendo os nós que não são folhas e aplicando a operação \texttt{Heapify} de baixo para cima. Esta fase tem complexidade \(\mathcal{O}(n)\), resultado de uma análise amortizada sobre o número de operações em cada nível da árvore.
 
-Após a construção do heap, o algoritmo realiza \(n - 1\) extrações sucessivas do máximo. Cada extração envolve uma troca seguida de uma chamada à função \texttt{Heapify}, que tem complexidade \(\mathcal{O}(\log n)\), pois percorre a altura do heap. Assim, a fase de ordenação tem complexidade total \(\mathcal{O}(n \log n)\).
+Depois da heap construída, o algoritmo realiza \(n - 1\) extrações do maior elemento. Cada extração envolve uma troca e uma chamada à função \texttt{Heapify}, que percorre a altura da heap, com custo \(\mathcal{O}(\log n)\). Assim, esta fase tem complexidade total \(\mathcal{O}(n \log n)\).
 
-Como o processo é sempre o mesmo independentemente da ordem inicial dos dados, a complexidade do algoritmo é a mesma no melhor, pior e caso médio. O Heap Sort não é estável, mas tem a vantagem de ser in-place, necessitando apenas de espaço adicional constante.
+Como o processo é sempre igual, independentemente da ordem inicial dos dados, a complexidade do Heap Sort é a mesma no melhor, no pior e no caso médio. O algoritmo não é estável, mas tem a vantagem de ser in-place, usando apenas memória adicional constante.
 
 Em resumo, a complexidade do Heap Sort é:
 \[
 \begin{cases}
-\mathcal{O}(n \log n) & \text{melhor caso} \\
-\mathcal{O}(n \log n) & \text{pior caso} \\
-\mathcal{O}(n \log n) & \text{caso médio}
+\mathcal{O}(n \log n) & \text{em todos os casos}
 \end{cases}
 \]
 
 \subsection{Timsort}
 
-O algoritmo Timsort é um algoritmo híbrido que combina Insertion Sort e Merge Sort, sendo utilizado como algoritmo de ordenação padrão em linguagens como Python e Java. O seu funcionamento baseia-se na identificação de subsequências ordenadas (chamadas \textit{runs}), que são ordenadas individualmente com Insertion Sort e depois fundidas com Merge Sort.
+O algoritmo Timsort é um algoritmo híbrido sofisticado que combina as estratégias do Insertion Sort e do Merge Sort, tirando partido das vantagens de ambos. É utilizado como algoritmo de ordenação padrão em linguagens como Python e Java, devido à sua elevada eficiência em dados reais.
+
+O funcionamento do Timsort assenta na identificação de subsequências já ordenadas na lista original, conhecidas como \textit{runs}. Estas \textit{runs} são inicialmente tratadas com Insertion Sort, aproveitando a sua eficiência em listas pequenas ou quase ordenadas. Em seguida, as diferentes \textit{runs} são fundidas de forma eficiente com Merge Sort, mantendo a estabilidade e garantindo boa performance mesmo em casos adversos.
+
+Graças a esta abordagem adaptativa, o Timsort consegue desempenhos excelentes em listas parcialmente ordenadas, combinando velocidade, estabilidade e robustez.
 
 \begin{algorithm}[H]
     \raggedright
@@ -633,19 +642,19 @@ Além disso, o Timsort é estável e eficiente em termos práticos, sendo adequa
 Em resumo, a complexidade do Timsort é:
 \[
 \begin{cases}
-\mathcal{O}(n) & \text{melhor caso (lista já parcialmente ordenada)} \\
+\mathcal{O}(n) & \text{melhor caso (lista parcialmente ordenada)} \\
 \mathcal{O}(n \log n) & \text{pior caso (dados desordenados)} \\
 \mathcal{O}(n \log n) & \text{caso médio}
 \end{cases}
 \]
 
-\section{Simulação de Ordenações}
+\section{Resultados}
 
-ns q usar python para simluar os algs e contar ops basicas
+A partir da análise individual de cada algoritmo, torna-se possível uma comparação global das suas complexidades.
 
 \begin{table}[H]
 \centering
-\caption{comparao das complexidades teoricas CONFIRMAR where k is  range of input values and n is number of elemenets to sort}
+\caption{Comparação das complexidades temporais teóricas médias dos algoritmos de ordenação considerados. Assume-se que \( n \) é o número de elementos a ordenar, \( k \) o maior valor presente e \( d \) o número máximo de algarismos de um elemento.}
 \label{tab:complexidades}
 \begin{tabular}{lr}
 \toprule
@@ -655,8 +664,8 @@ Bubble Sort & $O(n^2)$ \\
 Selection Sort & $O(n^2)$ \\
 Insertion Sort & $O(n^2)$ \\
 Counting Sort & $O(n + k)$ \\
-Radix Sort & $O(nk)$ \\
-Quick Sort & $O(n \log n)$* \\
+Radix Sort & $O(n \times d)$ \\
+Quick Sort & $O(n \log n)$ \\
 Merge Sort & $O(n \log n)$ \\
 Heap Sort & $O(n \log n)$ \\
 Timsort & $O(n \log n)$ \\
@@ -664,14 +673,34 @@ Timsort & $O(n \log n)$ \\
 \end{tabular}
 \end{table}
 
+A Tabela \ref{tab:complexidades} apresenta a referida comparação, tendo em conta a complexidade média teórica de cada um dos algoritmos analisados.
+
+De modo a analisar estas complexidades de uma forma prática, os algoritmos foram implementados em \textit{Python}, aplicados a listas de diferentes dimensões, com elementos inteiros positivos até $1000$. Para cada execução, foi contabilizado o número de operações básicas realizadas, permitindo comparar o comportamento empírico com a complexidade teórica. Para além disso, para cada tamanho de lista, foram geradas $5$ listas aleatórias, de modo a criar robustez face aos melhores e piores casos.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\linewidth]{sorting_complexities.png}
-    \caption{complxidades baseadas no num de ops basicas em listas geradas com numeros inteiros positivos aleatorios até 1000}
+    \caption{Análise do número de operações básicas dos diferentes algoritmos face a diferentes tamanhos de listas.}
     \label{fig:sorting_complexities}
 \end{figure}
 
+A partir da análise da figura \ref{fig:sorting_complexities}, que contém os resultados práticos da implementação dos algoritmos analisados, torna-se possível então a comparação entre o comportamento empírico com a complexidade teórica.
 
+No caso do Counting Sort, é possível verificar que a sua complexidade se comporta como \( \mathcal{O}(n) \), uma vez que o valor máximo presente na lista (\( k = 1000 \)) é significativamente menor do que os tamanhos das listas utilizadas nesta simulação. Assim, o termo adicional \( k \) não afeta substancialmente o crescimento do tempo de execução.
+
+Relativamente aos algoritmos Bubble Sort, Selection Sort e Insertion Sort, observa-se um crescimento quadrático consistente com a complexidade teórica \( \mathcal{O}(n^2) \). Nota-se que o desempenho do Selection Sort não se destaca visualmente no gráfico, por se sobrepor ao do Insertion Sort, evidenciando o mesmo comportamento assintótico.
+
+Quanto aos restantes algoritmos, com exceção do Radix Sort, todos apresentam um crescimento compatível com a complexidade \( \mathcal{O}(n \log n) \), conforme previsto teoricamente. Já o Radix Sort, cuja complexidade é dada por \( \mathcal{O}(n \cdot b) \), onde \( b \) representa o número de dígitos necessários para representar o maior valor \( k \), pode também ser expressa como \( \mathcal{O}(n \cdot \log_b k) \), assumindo uma base \( b \) fixa. Na representaçãos gráfica, observa-se que o seu desempenho tende a aproximar-se dos algoritmos de complexidade \( \mathcal{O}(n \log n) \), devido à presença de um fator logarítmico multiplicativo que, apesar de ser pequeno, afeta o crescimento linear.
+
+Este resultado demonstra que, apesar das complexidades teóricas associadas a cada algoritmo, o seu desempenho prático depende fortemente das características da lista a ser ordenada, como a distribuição dos valores ou a presença de padrões específicos nos dados.
+
+\section{Conclusão}
+
+Neste trabalho, foram analisados e comparados nove algoritmos de ordenação, abrangendo abordagens clássicas (como Bubble Sort, Selection Sort e Insertion Sort), algoritmos mais eficientes baseados em paradigmas de dividir-para-conquistar (como Quick Sort, Merge Sort e Heap Sort), e algoritmos especializados como Counting Sort, Radix Sort e Timsort. Para cada algoritmo, foram descritos o funcionamento, a complexidade teórica, as vantagens e limitações, e o comportamento prático observado através de simulações em \textit{Python}.
+
+A análise empírica permitiu confirmar, de forma geral, as previsões teóricas. Algoritmos quadráticos apresentaram um crescimento acentuado com o aumento do tamanho da lista, tornando-se inviáveis para grandes volumes de dados. Por outro lado, algoritmos com complexidade \( \mathcal{O}(n \log n) \) revelaram-se muito mais eficientes e escaláveis. O caso do Radix Sort destacou a importância de considerar não apenas a complexidade assintótica, mas também os fatores constantes ocultos e as condições específicas dos dados, uma vez que, apesar da sua complexidade quase linear, o seu desempenho prático aproxima-se frequentemente dos algoritmos \( \mathcal{O}(n \log n) \) devido ao custo das múltiplas passagens.
+
+Conclui-se, assim, que a escolha do algoritmo de ordenação mais adequado não deve ser feita apenas com base na complexidade teórica, mas também considerando as características concretas dos dados, o contexto de utilização e os requisitos práticos de desempenho e memória.
 
 \bibliographystyle{IEEEtran}
 \bibliography{references}
