@@ -60,9 +60,9 @@ Este trabalho apresenta uma análise comparativa de nove algoritmos de ordenaç�
 
 \section{Introdução}
 
-Os algoritmos de ordenação são essenciais em várias áreas da optimização combinatória e da investigação operacional, sendo utilizados para organizar dados de forma eficiente, melhorar o desempenho de algoritmos de procura e reduzir a complexidade computacional de problemas em larga escala.
+Os algoritmos de ordenação são essenciais em várias áreas da optimização combinatória e da investigação operacional, sendo utilizados para organizar dados de forma eficiente, melhorar o desempenho de algoritmos de procura e reduzir a complexidade computacional de problemas em larga escala \cite{intro1}.
 
-Em contextos de otimização combinatória, onde para vários problemas se torna fundamental a ordenação prévia de dados, como nas heurísticas para o problema Knapsack, no algoritmo de Kruskal para construção de árvores geradoras mínimas, ou em algoritmos gulosos para cobertura de conjuntos, a escolha do método de ordenação pode impactar significativamente a eficiência global da solução.
+Em contextos de otimização combinatória, onde para vários problemas se torna fundamental a ordenação prévia de dados, como nas heurísticas para o problema Knapsack, no algoritmo de Kruskal para construção de árvores geradoras mínimas, ou em algoritmos gulosos para cobertura de conjuntos, a escolha do método de ordenação pode impactar significativamente a eficiência global da solução \cite{deng2025combinatorial}.
 
 Este trabalho visa explorar os principais algoritmos de ordenação, destacando as suas características, o seu funcionamento, a complexidade computacional associada e uma análise comparativa entre os mesmos.
 
@@ -80,7 +80,7 @@ Nesta secção apresentam-se nove algoritmos de ordenação selecionados, com um
 
 O algoritmo \textit{Bubble Sort} consiste em comparar um dado item com todos os elementos de uma lista, em que o item vai se reposicionando com elementos comparativamente menores até encontrar um item maior ou chegar ao fim da lista. O nome do algoritmo prende-se com a forma como o elemento comparado vai ascendendo (ou afundando, consoante seja usado), tal como uma bolha na água. 
 
-O algoritmo Bubble Sort ordena uma lista iterando repetidamente sobre os elementos e trocando pares adjacentes se estiverem fora de ordem. A cada iteração, o maior elemento "bolha" para o fim da lista não ordenada. O processo repete-se até que nenhuma troca seja necessária, sinalizando que a lista está ordenada.
+O algoritmo Bubble Sort ordena uma lista iterando repetidamente sobre os elementos e trocando pares adjacentes se estiverem fora de ordem. A cada iteração, o maior elemento "bolha" para o fim da lista não ordenada. O processo repete-se até que nenhuma troca seja necessária, sinalizando que a lista está ordenada \cite{asthana2016bubble}.
 
 \begin{algorithm}[H]
     \raggedright
@@ -136,7 +136,7 @@ Em resumo, a complexidade do Bubble Sort é:
 
 \subsection{Selection Sort}
 
-O Selection Sort é um algoritmo de ordenação que pertence à família dos algoritmos \textit{selection sort}. Neste tipo de algoritmo, a lista é ordenada progressivamente através da seleção repetida do menor elemento entre os ainda não ordenados. A cada iteração, o menor elemento da porção não ordenada da lista é identificado e trocado com o elemento na posição corrente, avançando assim a fronteira da sublista ordenada.
+O Selection Sort é um algoritmo de ordenação que pertence à família dos algoritmos \textit{selection sort}. Neste tipo de algoritmo, a lista é ordenada progressivamente através da seleção repetida do menor elemento entre os ainda não ordenados. A cada iteração, o menor elemento da porção não ordenada da lista é identificado e trocado com o elemento na posição corrente, avançando assim a fronteira da sublista ordenada \cite{purnomo2023theoretical}.
 
 \begin{algorithm}[H]
     \raggedright
@@ -179,7 +179,7 @@ Em resumo, o algoritmo Selection Sort tem complexidade temporal \(\mathcal{O}(n^
 
 \subsection{Insertion Sort}
 
-O algoritmo Insertion Sort ordena uma lista construindo, passo a passo, uma sublista ordenada à esquerda. Em cada iteração, o elemento atual é comparado com os anteriores e inserido na posição adequada, garantindo que a sublista à esquerda permanece ordenada. Para isso, os elementos maiores são deslocados uma posição para a direita, abrindo espaço para a inserção correta. O processo repete-se até que todos os elementos estejam no seu devido lugar.
+O algoritmo Insertion Sort ordena uma lista construindo, passo a passo, uma sublista ordenada à esquerda. Em cada iteração, o elemento atual é comparado com os anteriores e inserido na posição adequada, garantindo que a sublista à esquerda permanece ordenada. Para isso, os elementos maiores são deslocados uma posição para a direita, abrindo espaço para a inserção correta. O processo repete-se até que todos os elementos estejam no seu devido lugar \cite{samee2015analysis}.
 
 \begin{algorithm}[H]
     \raggedright
@@ -227,7 +227,7 @@ Em termos de eficiência prática, o Insertion Sort torna-se bastante eficiente 
 
 \subsection{Counting Sort}
 
-O algoritmo Counting Sort é um método de ordenação não comparativo, especialmente eficiente para listas de números inteiros não negativos com amplitude limitada. Em vez de comparar elementos entre si, constrói uma tabela de frequências que regista quantas vezes cada valor ocorre. A partir dessa informação, determina-se a posição exata de cada elemento na lista final, permitindo uma ordenação estável e com complexidade linear nos melhores casos, quando o intervalo dos valores é conhecido e reduzido.
+O algoritmo Counting Sort é um método de ordenação não comparativo, especialmente eficiente para listas de números inteiros não negativos com amplitude limitada. Em vez de comparar elementos entre si, constrói uma tabela de frequências que regista quantas vezes cada valor ocorre. A partir dessa informação, determina-se a posição exata de cada elemento na lista final, permitindo uma ordenação estável e com complexidade linear nos melhores casos, quando o intervalo dos valores é conhecido e reduzido \cite{song2023improvement}.
 
 \begin{algorithm}[H]
     \raggedright
@@ -272,7 +272,7 @@ O algoritmo é estável e apropriado para ordenar valores inteiros com intervalo
 
 \subsection{Radix Sort}
 
-O algoritmo Radix Sort ordena números inteiros ao processá-los dígito a dígito, começando pelo dígito menos significativo (unidades) e avançando até ao mais significativo (milhares, etc.). Em cada etapa, os elementos são reorganizados com base no dígito atual, utilizando um algoritmo de ordenação estável, tipicamente o Counting Sort, para garantir que a ordem relativa dos elementos com dígitos iguais é preservada. O processo repete-se tantas vezes quantos os dígitos do maior número na lista, até a ordenação estar completa.
+O algoritmo Radix Sort ordena números inteiros ao processá-los dígito a dígito, começando pelo dígito menos significativo (unidades) e avançando até ao mais significativo (milhares, etc.). Em cada etapa, os elementos são reorganizados com base no dígito atual, utilizando um algoritmo de ordenação estável, tipicamente o Counting Sort, para garantir que a ordem relativa dos elementos com dígitos iguais é preservada. O processo repete-se tantas vezes quantos os dígitos do maior número na lista, até a ordenação estar completa \cite{obeya2019parallel}.
 
 \begin{algorithm}[H]
     \raggedright
@@ -340,7 +340,7 @@ Assim, o Radix Sort é eficiente quando os números têm uma quantidade limitada
 
 \subsection{Quick Sort}
 
-O algoritmo Quick Sort é um método de ordenação baseado no paradigma de dividir-para-conquistar, amplamente valorizado pela sua eficiência prática e adaptabilidade a arquiteturas modernas. Escolhe um elemento como pivô e reorganiza a lista colocando à esquerda os elementos menores ou iguais ao pivô e à direita os maiores. Este processo de partição divide o problema original em subproblemas independentes, permitindo aplicar o mesmo procedimento de forma recursiva a cada sublista.
+O algoritmo Quick Sort é um método de ordenação baseado no paradigma de dividir-para-conquistar, amplamente valorizado pela sua eficiência prática e adaptabilidade a arquiteturas modernas. Escolhe um elemento como pivô e reorganiza a lista colocando à esquerda os elementos menores ou iguais ao pivô e à direita os maiores. Este processo de partição divide o problema original em subproblemas independentes, permitindo aplicar o mesmo procedimento de forma recursiva a cada sublista \cite{quicksort}.
 
 A estrutura do Quick Sort é particularmente favorável ao paralelismo, já que, após a partição, as duas sublistas podem ser ordenadas simultaneamente em processos ou threads distintos, sem dependências entre si.
 
@@ -404,7 +404,7 @@ Em resumo, a complexidade do Quick Sort é:
 
 \subsection{Merge Sort}
 
-O algoritmo Merge Sort é um método de ordenação baseado no paradigma de dividir-para-conquistar, tal como o Quick Sort. No entanto, em vez de utilizar um pivô para partição, o Merge Sort divide a lista ao meio de forma determinística, recursivamente, até obter sublistas de tamanho 1. Em seguida, procede à fusão ordenada dessas sublistas, reconstruindo progressivamente a lista original em ordem crescente.
+O algoritmo Merge Sort é um método de ordenação baseado no paradigma de dividir-para-conquistar, tal como o Quick Sort. No entanto, em vez de utilizar um pivô para partição, o Merge Sort divide a lista ao meio de forma determinística, recursivamente, até obter sublistas de tamanho 1. Em seguida, procede à fusão ordenada dessas sublistas, reconstruindo progressivamente a lista original em ordem crescente \cite{mergsesort}.
 
 É, portanto, semelhante ao Quick Sort na abordagem recursiva e na divisão do problema, mas sem recurso a um pivô. A divisão é sempre equitativa e a ordenação ocorre na fase de combinação, não na de separação.
 
@@ -478,7 +478,7 @@ Em resumo, a complexidade do Merge Sort é:
 
 \subsection{Heap Sort}
 
-O algoritmo Heap Sort ordena uma lista aproveitando as propriedades de uma estrutura chamada heap máxima, onde o maior elemento está sempre no topo. Embora represente uma árvore, esta estrutura é implementada como um vetor e obedece à regra de que cada elemento é maior ou igual aos seus filhos. O processo começa por reorganizar a lista para formar essa heap. Em seguida, remove-se o maior elemento (no topo), troca-se com o último da lista e ajusta-se a heap com os elementos restantes. Este ciclo repete-se até que todos os elementos estejam no lugar, resultando numa lista totalmente ordenada.
+O algoritmo Heap Sort ordena uma lista aproveitando as propriedades de uma estrutura chamada heap máxima, onde o maior elemento está sempre no topo. Embora represente uma árvore, esta estrutura é implementada como um vetor e obedece à regra de que cada elemento é maior ou igual aos seus filhos. O processo começa por reorganizar a lista para formar essa heap. Em seguida, remove-se o maior elemento (no topo), troca-se com o último da lista e ajusta-se a heap com os elementos restantes. Este ciclo repete-se até que todos os elementos estejam no lugar, resultando numa lista totalmente ordenada \cite{heapsort}.
 
 \begin{algorithm}[H]
     \raggedright
@@ -544,7 +544,7 @@ Em resumo, a complexidade do Heap Sort é:
 
 O algoritmo Timsort é um algoritmo híbrido sofisticado que combina as estratégias do Insertion Sort e do Merge Sort, tirando partido das vantagens de ambos. É utilizado como algoritmo de ordenação padrão em linguagens como Python e Java, devido à sua elevada eficiência em dados reais.
 
-O funcionamento do Timsort assenta na identificação de subsequências já ordenadas na lista original, conhecidas como \textit{runs}. Estas \textit{runs} são inicialmente tratadas com Insertion Sort, aproveitando a sua eficiência em listas pequenas ou quase ordenadas. Em seguida, as diferentes \textit{runs} são fundidas de forma eficiente com Merge Sort, mantendo a estabilidade e garantindo boa performance mesmo em casos adversos.
+O funcionamento do Timsort assenta na identificação de subsequências já ordenadas na lista original, conhecidas como \textit{runs}. Estas \textit{runs} são inicialmente tratadas com Insertion Sort, aproveitando a sua eficiência em listas pequenas ou quase ordenadas. Em seguida, as diferentes \textit{runs} são fundidas de forma eficiente com Merge Sort, mantendo a estabilidade e garantindo boa performance mesmo em casos adversos \cite{auger2019worstcasecomplexitytimsort}.
 
 Graças a esta abordagem adaptativa, o Timsort consegue desempenhos excelentes em listas parcialmente ordenadas, combinando velocidade, estabilidade e robustez.
 
@@ -706,6 +706,3 @@ Conclui-se, assim, que a escolha do algoritmo de ordenação mais adequado não 
 \bibliography{references}
 
 \end{document}
-
-
-
