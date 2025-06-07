@@ -53,7 +53,7 @@ Este trabalho apresenta uma análise comparativa de nove algoritmos de ordenaç�
 \begin{quote}
 \small
 \noindent
-\textbf{Palavras-chave:} arranjar referencias, rever italico ou não no nome dos coisos + "sort" VS "Sort" + mathcal O VS normal math O
+\textbf{Palavras-chave:} arranjar referencias
 \end{quote}
 
 \IEEEpeerreviewmaketitle
@@ -76,9 +76,9 @@ Nesta secção apresentam-se nove algoritmos de ordenação selecionados, com um
 
 \subsection{Bubble Sort}
 
-% Like insertion sort, bubble sort is adaptive, which can give it an advantage over algorithms like quicksort. This means that it may outperform those algorithms in cases where the list is already mostly sorted (having a small number of inversions), despite the fact that it has worse average-case time complexity. For example, bubble sort is O ( n ) {\displaystyle O(n)} on a list that is already sorted, while quicksort would still perform its entire O ( n log ⁡ n ) {\displaystyle O(n\log n)} sorting process. Útil para discutir os resultados, e potencial utilidade
+% Like insertion sort, bubble sort is adaptive, which can give it an advantage over algorithms like quicksort. This means that it may outperform those algorithms in cases where the list is already mostly sorted (having a small number of inversions), despite the fact that it has worse average-case time complexity. For example, bubble sort is \mathcall{O} ( n ) {\displaystyle \mathcall{O}(n)} on a list that is already sorted, while quicksort would still perform its entire \mathcall{O} ( n log ⁡ n ) {\displaystyle \mathcall{O}(n\log n)} sorting process. Útil para discutir os resultados, e potencial utilidade
 
-O algoritmo \textit{Bubble sort} consiste em comparar um dado item com todos os elementos de uma lista, em que o item vai se reposicionando com elementos comparativamente menores até encontrar um item maior ou chegar ao fim da lista. O nome do algoritmo prende-se com a forma como o elemento comparado vai ascendendo (ou afundando, consoante seja usado), tal como uma bolha na água. 
+O algoritmo \textit{Bubble Sort} consiste em comparar um dado item com todos os elementos de uma lista, em que o item vai se reposicionando com elementos comparativamente menores até encontrar um item maior ou chegar ao fim da lista. O nome do algoritmo prende-se com a forma como o elemento comparado vai ascendendo (ou afundando, consoante seja usado), tal como uma bolha na água. 
 
 O algoritmo Bubble Sort ordena uma lista iterando repetidamente sobre os elementos e trocando pares adjacentes se estiverem fora de ordem. A cada iteração, o maior elemento "bolha" para o fim da lista não ordenada. O processo repete-se até que nenhuma troca seja necessária, sinalizando que a lista está ordenada.
 
@@ -123,7 +123,7 @@ No pior caso, quando a lista está em ordem inversa, o algoritmo realiza o núme
 
 Tipicamente este algoritmo não encontra aplicação em casos reais devido à sua ineficiência. No entanto, a sua rápida implementação pode ser de interesse em casos particulares, em que listas que estejam próximas da sua forma ordenada.
 
-Existem algoritmos baseados nesta abordagem, tal como o \textit{Cocktail sort}, que aplica a metodologia em sentido crescente e decrescente, tornando-o mais rápido por norma, mas com o mesmo grau de complexidade no pior cenário.
+Existem algoritmos baseados nesta abordagem, tal como o Cocktail Sort, que aplica a metodologia em sentido crescente e decrescente, tornando-o mais rápido por norma, mas com o mesmo grau de complexidade no pior cenário.
 
 Em resumo, a complexidade do Bubble Sort é:
 \[
@@ -660,15 +660,15 @@ A partir da análise individual de cada algoritmo, torna-se possível uma compar
 \toprule
 \textbf{Algoritmo} & \textbf{Complexidade} \\
 \midrule
-Bubble Sort & $O(n^2)$ \\
-Selection Sort & $O(n^2)$ \\
-Insertion Sort & $O(n^2)$ \\
-Counting Sort & $O(n + k)$ \\
-Radix Sort & $O(n \times d)$ \\
-Quick Sort & $O(n \log n)$ \\
-Merge Sort & $O(n \log n)$ \\
-Heap Sort & $O(n \log n)$ \\
-Timsort & $O(n \log n)$ \\
+Bubble Sort & $\mathcal{O}(n^2)$ \\
+Selection Sort & $\mathcal{O}(n^2)$ \\
+Insertion Sort & $\mathcal{O}(n^2)$ \\
+Counting Sort & $\mathcal{O}(n + k)$ \\
+Radix Sort & $\mathcal{O}(n \times d)$ \\
+Quick Sort & $\mathcal{O}(n \log n)$ \\
+Merge Sort & $\mathcal{O}(n \log n)$ \\
+Heap Sort & $\mathcal{O}(n \log n)$ \\
+Timsort & $\mathcal{O}(n \log n)$ \\
 \bottomrule
 \end{tabular}
 \end{table}
