@@ -62,7 +62,7 @@ Este trabalho apresenta uma análise comparativa de nove algoritmos de ordenaç�
 
 Os algoritmos de ordenação são essenciais em várias áreas da optimização combinatória e da investigação operacional, sendo utilizados para organizar dados de forma eficiente, melhorar o desempenho de algoritmos de procura e reduzir a complexidade computacional de problemas em larga escala \cite{intro1}.
 
-Em contextos de otimização combinatória, onde para vários problemas se torna fundamental a ordenação prévia de dados, como nas heurísticas para o problema Knapsack, no algoritmo de Kruskal para construção de árvores geradoras mínimas, ou em algoritmos gulosos para cobertura de conjuntos, a escolha do método de ordenação pode impactar significativamente a eficiência global da solução \cite{deng2025combinatorial}.
+Em contexto de otimização combinatória, onde para vários problemas se torna fundamental a ordenação prévia de dados, como nas heurísticas para o problema Knapsack, no algoritmo de Kruskal para construção de árvores geradoras mínimas, ou em algoritmos gulosos para cobertura de conjuntos, a escolha do método de ordenação pode impactar significativamente a eficiência global da solução \cite{deng2025combinatorial}.
 
 Este trabalho visa explorar os principais algoritmos de ordenação, destacando as suas características, o seu funcionamento, a complexidade computacional associada e uma análise comparativa entre os mesmos.
 
@@ -684,13 +684,13 @@ De modo a analisar estas complexidades de uma forma prática, os algoritmos fora
     \label{fig:sorting_complexities}
 \end{figure}
 
-A partir da análise da figura \ref{fig:sorting_complexities}, que contém os resultados práticos da implementação dos algoritmos analisados, torna-se possível então a comparação entre o comportamento empírico com a complexidade teórica.
+A partir da análise da Figura \ref{fig:sorting_complexities}, que contém os resultados práticos da implementação dos algoritmos analisados, torna-se possível então a comparação entre o comportamento empírico com a complexidade teórica.
 
 No caso do Counting Sort, é possível verificar que a sua complexidade se comporta como \( \mathcal{O}(n) \), uma vez que o valor máximo presente na lista (\( k = 1000 \)) é significativamente menor do que os tamanhos das listas utilizadas nesta simulação. Assim, o termo adicional \( k \) não afeta substancialmente o crescimento do tempo de execução.
 
 Relativamente aos algoritmos Bubble Sort, Selection Sort e Insertion Sort, observa-se um crescimento quadrático consistente com a complexidade teórica \( \mathcal{O}(n^2) \). Nota-se que o desempenho do Selection Sort não se destaca visualmente no gráfico, por se sobrepor ao do Insertion Sort, evidenciando o mesmo comportamento assintótico.
 
-Quanto aos restantes algoritmos, com exceção do Radix Sort, todos apresentam um crescimento compatível com a complexidade \( \mathcal{O}(n \log n) \), conforme previsto teoricamente. Já o Radix Sort, cuja complexidade é dada por \( \mathcal{O}(n \cdot b) \), onde \( b \) representa o número de dígitos necessários para representar o maior valor \( k \), pode também ser expressa como \( \mathcal{O}(n \cdot \log_b k) \), assumindo uma base \( b \) fixa. Na representaçãos gráfica, observa-se que o seu desempenho tende a aproximar-se dos algoritmos de complexidade \( \mathcal{O}(n \log n) \), devido à presença de um fator logarítmico multiplicativo que, apesar de ser pequeno, afeta o crescimento linear.
+Quanto aos restantes algoritmos, com exceção do Radix Sort, todos apresentam um crescimento compatível com a complexidade \( \mathcal{O}(n \log n) \), conforme previsto teoricamente. Já o Radix Sort, cuja complexidade é dada por \( \mathcal{O}(n \cdot b) \), onde \( b \) representa o número de dígitos necessários para representar o maior valor \( k \), pode também ser expressa como \( \mathcal{O}(n \cdot \log_b k) \), assumindo uma base \( b \) fixa. Na representação gráfica, observa-se que o seu desempenho tende a aproximar-se dos algoritmos de complexidade \( \mathcal{O}(n \log n) \), devido à presença de um fator logarítmico multiplicativo que, apesar de ser pequeno, afeta o crescimento linear.
 
 Este resultado demonstra que, apesar das complexidades teóricas associadas a cada algoritmo, o seu desempenho prático depende fortemente das características da lista a ser ordenada, como a distribuição dos valores ou a presença de padrões específicos nos dados.
 
