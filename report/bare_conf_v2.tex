@@ -82,7 +82,7 @@ O algoritmo Bubble Sort consiste em comparar um dado item com todos os elementos
 
 O algoritmo Bubble Sort ordena uma lista iterando repetidamente sobre os elementos e trocando pares adjacentes se estiverem fora de ordem. A cada iteração, o maior elemento, "bolha", passa para o fim da lista não ordenada. O processo repete-se até que nenhuma troca seja necessária, sinalizando que a lista está ordenada \cite{asthana2016bubble}.
 
-\begin{algorithm}[H]
+\begin{algorithm}[h]
     \raggedright
     \vspace{.1em}
     \textbf{Entrada:} lista \textit{arr} \\
@@ -90,6 +90,7 @@ O algoritmo Bubble Sort ordena uma lista iterando repetidamente sobre os element
     \vspace{.5em}
     \hrule 
     \caption{Bubble Sort}
+    \label{alg:bubble_sort}
     \begin{algorithmic}[1]
         \State $n \gets$ \text{len}$(arr)$
         
@@ -110,7 +111,7 @@ O algoritmo Bubble Sort ordena uma lista iterando repetidamente sobre os element
     \end{algorithmic}
 \end{algorithm}
 
-Através da análise do pseudocódigo apresentado, verifica-se que a complexidade do algoritmo depende do número de comparações e trocas realizadas. Em todos os casos, o número máximo de comparações realizadas é dado por
+Através da análise do pseudocódigo apresentado (Algoritmo \ref{alg:bubble_sort}), verifica-se que a complexidade do algoritmo depende do número de comparações e trocas realizadas. Em todos os casos, o número máximo de comparações realizadas é dado por
 \[
 (n - 1) + (n - 2) + \ldots + 1 = \frac{n(n - 1)}{2} \text{,}
 \]
@@ -408,7 +409,7 @@ O algoritmo Merge Sort é um método de ordenação baseado no paradigma de divi
 
 É, portanto, semelhante ao Quick Sort na abordagem recursiva e na divisão do problema, mas sem recurso a um pivô. A divisão é sempre equitativa e a ordenação ocorre na fase de combinação, não na de separação.
 
-\begin{algorithm}[H]
+\begin{algorithm}[h]
     \raggedright
     \vspace{.1em}
     \textbf{Entrada:} lista \textit{arr} \\
@@ -557,45 +558,6 @@ Graças a esta abordagem adaptativa, o Timsort consegue desempenhos excelentes e
     \hrule 
     \caption{Timsort}
     \begin{algorithmic}[1]
-        \Function{InsertionSort}{$arr$, $left$, $right$}
-            \For{$i$ from $left + 1$ to $right$}
-                \State $key \gets arr[i]$
-                \State $j \gets i - 1$
-                \While{$j \geq left$ and $arr[j] > key$}
-                    \State $arr[j + 1] \gets arr[j]$
-                    \State $j \gets j - 1$
-                \EndWhile
-                \State $arr[j + 1] \gets key$
-            \EndFor
-        \EndFunction
-    
-        \Function{Merge}{$arr$, $left$, $mid$, $right$}
-            \State $left\_part \gets arr[left : mid + 1]$
-            \State $right\_part \gets arr[mid + 1 : right + 1]$
-            \State $i, j, k \gets 0, 0, left$
-            
-            \While{$i < \text{len}(left\_part)$ and $j < \text{len}(right\_part)$}
-                \If{$left\_part[i] \leq right\_part[j]$}
-                    \State $arr[k] \gets left\_part[i]$
-                    \State $i \gets i + 1$
-                \Else
-                    \State $arr[k] \gets right\_part[j]$
-                    \State $j \gets j + 1$
-                \EndIf
-                \State $k \gets k + 1$
-            \EndWhile
-    
-            \While{$i < \text{len}(left\_part)$}
-                \State $arr[k] \gets left\_part[i]$
-                \State $i,\ k \gets i + 1,\ k + 1$
-            \EndWhile
-    
-            \While{$j < \text{len}(right\_part)$}
-                \State $arr[k] \gets right\_part[j]$
-                \State $j,\ k \gets j + 1,\ k + 1$
-            \EndWhile
-        \EndFunction
-    
         \Function{Timsort}{$arr$}
             \State $MIN\_RUN \gets 32$
             \State $n \gets \text{len}(arr)$
@@ -610,7 +572,7 @@ Graças a esta abordagem adaptativa, o Timsort consegue desempenhos excelentes e
                     \State $mid \gets \min(n - 1, left + size - 1)$
                     \State $right \gets \min(n - 1, left + 2 \times size - 1)$
                     \If{$mid < right$}
-                        \State \Call{Merge}{$arr$, $left$, $mid$, $right$}
+                        \State \Call{MergeSort}{$arr$, $left$, $mid$, $right$}
                     \EndIf
                 \EndFor
                 \State $size \gets size \times 2$
